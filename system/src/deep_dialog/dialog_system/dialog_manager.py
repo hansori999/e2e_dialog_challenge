@@ -54,6 +54,7 @@ class DialogManager:
         
         self.agent.add_nl_to_action(self.agent_action) # add NL to Agent Dia_Act
         self.print_function(agent_action = self.agent_action['act_slot_response'])
+        print("\n")
         
         ########################################################################
         #   CALL USER TO TAKE HER TURN
@@ -144,4 +145,3 @@ class DialogManager:
                   
                     #kb_results = self.state_tracker.get_current_kb_results()
                     #print ('(Number of movies in KB satisfying current constraints: %s)' % len(kb_results))
-                    

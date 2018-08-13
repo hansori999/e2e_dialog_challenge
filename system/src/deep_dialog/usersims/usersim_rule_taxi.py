@@ -59,7 +59,7 @@ class RuleTaxiSimulator(UserSimulator):
         self.constraint_check = dialog_config.CONSTRAINT_CHECK_FAILURE
   
         """ Debug: build a fake goal mannually """
-        #self.debug_falk_goal()
+        self.debug_falk_goal()
         
         # sample first action
         user_action = self._sample_action()

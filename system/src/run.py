@@ -129,6 +129,11 @@ goal_file_path = params['goal_file_path']
 
 # load the user goals from .p file
 all_goal_set = pickle.load(open(goal_file_path, 'rb'))
+pp = open(goal_file_path+"goal.p","w")
+#pickle.dump(all_goal_set,pp)
+#pp.write(all_goal_set)
+json.dump(all_goal_set, pp, sort_keys=True, indent=4, separators=(',', ':'), ensure_ascii=False)
+pp.close()
 
 # split goal set
 split_fold = params.get('split_fold', 5)
@@ -141,6 +146,12 @@ for u_goal_id, u_goal in enumerate(all_goal_set):
 
 kb_path = params['kb_path']
 kb = pickle.load(open(kb_path, 'rb'))
+pp = open(kb_path+"kb.p","w")
+#pickle.dump(movie_kb,pp)
+#pp.write(movie_kb)
+json.dump(kb, pp, sort_keys=True, indent=4, separators=(',', ':'), ensure_ascii=False)
+pp.close()
+
 
 act_set = text_to_dict(params['act_set'])
 slot_set = text_to_dict(params['slot_set'])
