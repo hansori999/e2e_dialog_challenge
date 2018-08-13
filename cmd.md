@@ -51,15 +51,21 @@ This document describes how to run the simulation and different dialogue agents 
 all the movie data is under this folder: ./src/deep_dialog/data
 
 * Movie Knowledge Bases<br/>
-`movie_kb.1k.p` --- 94% success rate (for `user_goals_first_turn_template_subsets.v1.p`)<br/>
+`movie_kb.1k.v1.p` --- 52% success rate (for `user_goals_first.v2.p`)<br/>
+<!---`movie_kb.1k.p` --- 94% success rate (for `user_goals_first_turn_template_subsets.v1.p`)<br/>
 `movie_kb.v2.p` --- 36% success rate (for `user_goals_first_turn_template_subsets.v1.p`)
+--->
 
 * User Goals<br/>
-`user_goals_first_turn_template.v2.p` --- user goals extracted from the first user turn<br/>
+`user_goals_first.v2.p` --- user goals extracted from the first user turn
+<!---`user_goals_first_turn_template.v2.p` --- user goals extracted from the first user turn<br/>
 `user_goals_first_turn_template.part.movie.v1.p` --- a subset of user goals [Please use this one, the upper bound success rate on movie_kb.1k.json is 0.9765.]
+--->
 
 * NLG Rule Template<br/>
-`dia_act_nl_pairs.v6.json` --- some predefined NLG rule templates for both User simulator and Agent.
+`dia_act_nl_pairs.v7.json` --- some predefined NLG rule templates for both User simulator and Agent.
+<!---`dia_act_nl_pairs.v6.json` --- some predefined NLG rule templates for both User simulator and Agent.
+--->
 
 * Dialog Act Intent<br/>
 `dia_acts.txt`
@@ -114,6 +120,22 @@ all the restaurant data is under this folder: ./src/deep_dialog/data_taxi
 
 #### Rule Agent
 ```sh
+python run.py --agt 4 --usr 1 --max_turn 40
+	      --kb_path ./deep_dialog/data_movie/movie.kb.1k.v1.p
+	      --goal_file_path ./deep_dialog/data_movie/user_goals_first.v2.p
+	      --slot_set ./deep_dialog/data_movie/slot_set.txt
+	      --act_set ./deep_dialog/data_movie/dia_acts.txt
+	      --dict_path ./deep_dialog/data_movie/slot_dict.v1.p
+	      --nlg_model_path ./deep_dialog/models/nlg/movie/lstm_tanh_[1533529279.91]_87_99_199_0.988.p
+	      --nlu_model_path ./deep_dialog/models/nlu/movie/lstm_[1533588045.3]_38_38_240_0.998.p
+	      --diaact_nl_pairs ./deep_dialog/data_movie/dia_act_nl_pairs.v7.json
+	      --intent_err_prob 0.00
+	      --slot_err_prob 0.00
+	      --episodes 500
+	      --act_level 0
+```
+<!---
+```sh
 python run.py --agt 5 --usr 1 --max_turn 40
 	      --kb_path ./deep_dialog/data_movie/movie_kb.1k.p
 	      --goal_file_path ./deep_dialog/data_movie/user_goals_first_turn_template.part.movie.v1.p
@@ -128,9 +150,27 @@ python run.py --agt 5 --usr 1 --max_turn 40
 	      --episodes 500
 	      --act_level 0
 ```
-
+--->
 #### Cmd Agent
 NL Input
+```sh
+python run.py --agt 0 --usr 1 --max_turn 40
+	      --kb_path ./deep_dialog/data_movie/movie.kb.1k.v1.p
+	      --goal_file_path ./deep_dialog/data_movie/user_goals_first.v2.p
+	      --slot_set ./deep_dialog/data_movie/slot_set.txt
+	      --act_set ./deep_dialog/data_movie/dia_acts.txt
+	      --dict_path ./deep_dialog/data_movie/slot_dict.v1.p
+	      --nlg_model_path ./deep_dialog/models/nlg/movie/lstm_tanh_[1533529279.91]_87_99_199_0.988.p
+	      --nlu_model_path ./deep_dialog/models/nlu/movie/lstm_[1533588045.3]_38_38_240_0.998.p
+	      --diaact_nl_pairs ./deep_dialog/data_movie/dia_act_nl_pairs.v7.json
+	      --intent_err_prob 0.00
+	      --slot_err_prob 0.00
+	      --episodes 500
+	      --act_level 0
+	      --run_mode 0
+	      --cmd_input_mode 0
+```
+<!---
 ```sh
 python run.py --agt 0 --usr 1 --max_turn 40
 	      --kb_path ./deep_dialog/data_movie/movie_kb.1k.p
@@ -148,7 +188,26 @@ python run.py --agt 0 --usr 1 --max_turn 40
 	      --run_mode 0
 	      --cmd_input_mode 0
 ```
+--->
 Dia_Act Input
+```sh
+python run.py --agt 0 --usr 1 --max_turn 40
+	      --kb_path ./deep_dialog/data_movie/movie.kb.1k.v1.p
+	      --goal_file_path ./deep_dialog/data_movie/user_goals_first.v2.p
+	      --slot_set ./deep_dialog/data_movie/slot_set.txt
+	      --act_set ./deep_dialog/data_movie/dia_acts.txt
+	      --dict_path ./deep_dialog/data_movie/slot_dict.v1.p
+	      --nlg_model_path ./deep_dialog/models/nlg/movie/lstm_tanh_[1533529279.91]_87_99_199_0.988.p
+	      --nlu_model_path ./deep_dialog/models/nlu/movie/lstm_[1533588045.3]_38_38_240_0.998.p
+	      --diaact_nl_pairs ./deep_dialog/data_movie/dia_act_nl_pairs.v7.json
+	      --intent_err_prob 0.00
+	      --slot_err_prob 0.00
+	      --episodes 500
+	      --act_level 0
+	      --run_mode 0
+	      --cmd_input_mode 1
+```
+<!---
 ```sh
 python run.py --agt 0 --usr 1 --max_turn 40
 	      --kb_path ./deep_dialog/data_movie/movie_kb.1k.p 
@@ -166,9 +225,34 @@ python run.py --agt 0 --usr 1 --max_turn 40
 	      --run_mode 0
 	      --cmd_input_mode 1
 ```
+--->
 
 #### End2End RL Agent
 Train End2End RL Agent without NLU and NLG (with simulated noise in NLU)
+```sh
+python run.py --agt 9 --usr 1 --max_turn 40
+	      --kb_path ./deep_dialog/data_movie/movie.kb.1k.v1.p
+	      --goal_file_path ./deep_dialog/data_movie/user_goals_first.v2.p
+	      --slot_set ./deep_dialog/data_movie/slot_set.txt
+	      --act_set ./deep_dialog/data_movie/dia_acts.txt
+	      --dict_path ./deep_dialog/data_movie/slot_dict.v1.p
+	      --nlg_model_path ./deep_dialog/models/nlg/movie/lstm_tanh_[1533529279.91]_87_99_199_0.988.p
+	      --nlu_model_path ./deep_dialog/models/nlu/movie/lstm_[1533588045.3]_38_38_240_0.998.p
+	      --diaact_nl_pairs ./deep_dialog/data_movie/dia_act_nl_pairs.v7.json
+	      --dqn_hidden_size 80
+	      --experience_replay_pool_size 1000
+	      --episodes 500
+	      --simulation_epoch_size 100
+	      --write_model_dir ./deep_dialog/checkpoints/movie/non_nl/dqn/
+	      --run_mode 3
+	      --act_level 0
+	      --slot_err_prob 0.00
+	      --intent_err_prob 0.00
+	      --batch_size 16
+	      --warm_start 1
+	      --warm_start_epochs 120
+```
+<!---
 ```sh
 python run.py --agt 9 --usr 1 --max_turn 40
 	      --kb_path ./deep_dialog/data_movie/movie_kb.1k.p
@@ -192,7 +276,32 @@ python run.py --agt 9 --usr 1 --max_turn 40
 	      --warm_start 1
 	      --warm_start_epochs 120
 ```
+--->
 Train End2End RL Agent with NLU and NLG
+```sh
+python run.py --agt 9 --usr 1 --max_turn 40
+	      --kb_path ./deep_dialog/data_movie/movie.kb.1k.v1.p
+	      --goal_file_path ./deep_dialog/data_movie/user_goals_first.v2.p
+	      --slot_set ./deep_dialog/data_movie/slot_set.txt
+	      --act_set ./deep_dialog/data_movie/dia_acts.txt
+	      --dict_path ./deep_dialog/data_movie/slot_dict.v1.p
+	      --nlg_model_path ./deep_dialog/models/nlg/movie/lstm_tanh_[1533529279.91]_87_99_199_0.988.p
+	      --nlu_model_path ./deep_dialog/models/nlu/movie/lstm_[1533588045.3]_38_38_240_0.998.p
+	      --diaact_nl_pairs ./deep_dialog/data_movie/dia_act_nl_pairs.v7.json
+	      --dqn_hidden_size 80
+	      --experience_replay_pool_size 1000
+	      --episodes 500
+	      --simulation_epoch_size 100
+	      --write_model_dir ./deep_dialog/checkpoints/movie/nl/dqn/
+	      --run_mode 3
+	      --act_level 1
+	      --slot_err_prob 0.00
+	      --intent_err_prob 0.00
+	      --batch_size 16
+	      --warm_start 1
+	      --warm_start_epochs 120
+```
+<!---
 ```sh
 python run.py --agt 9 --usr 1 --max_turn 40
 	      --kb_path ./deep_dialog/data_movie/movie_kb.1k.p
@@ -216,7 +325,30 @@ python run.py --agt 9 --usr 1 --max_turn 40
 	      --warm_start 1
 	      --warm_start_epochs 120
 ```
+--->
 Test RL Agent with N dialogues:
+```sh
+python run.py --agt 9 --usr 1 --max_turn 40
+	      --kb_path ./deep_dialog/data_movie/movie.kb.1k.v1.p
+	      --goal_file_path ./deep_dialog/data_movie/user_goals_first.v2.p
+	      --slot_set ./deep_dialog/data_movie/slot_set.txt
+	      --act_set ./deep_dialog/data_movie/dia_acts.txt
+	      --dict_path ./deep_dialog/data_movie/slot_dict.v1.p
+	      --nlg_model_path ./deep_dialog/models/nlg/movie/lstm_tanh_[1533529279.91]_87_99_199_0.988.p
+	      --nlu_model_path ./deep_dialog/models/nlu/movie/lstm_[1533588045.3]_38_38_240_0.998.p
+	      --diaact_nl_pairs ./deep_dialog/data_movie/dia_act_nl_pairs.v7.json
+	      --dqn_hidden_size 80
+	      --experience_replay_pool_size 1000
+	      --episodes 300 
+	      --simulation_epoch_size 100
+	      --write_model_dir ./deep_dialog/checkpoints/movie/non_nl/dqn/
+	      --slot_err_prob 0.00
+	      --intent_err_prob 0.00
+	      --batch_size 16
+	      --trained_model_path ./deep_dialog/checkpoints/movie/non_nl/dqn/agt_9_191_500_0.40600.p
+	      --run_mode 3
+```
+<!---
 ```sh
 python run.py --agt 9 --usr 1 --max_turn 40
 	      --kb_path ./deep_dialog/data_movie/movie_kb.1k.p
@@ -238,6 +370,7 @@ python run.py --agt 9 --usr 1 --max_turn 40
 	      --trained_model_path ./deep_dialog/checkpoints/rl_agent/noe2e/agt_9_478_500_0.98000.p
 	      --run_mode 3
 ```
+--->
 
 ### Restaurant domain
 
@@ -423,20 +556,20 @@ python run.py --agt 13 --usr 3 --max_turn 30
 ```
 
 ## Baseline Results
-### Movie Domain (To-Be-Appeared)
-|kb|goals|upper bound|agt=5|agt=5 (NL)|agt=9|agt=9 (NL)|
-| -----| ----- | ----- | ----- | ----- | ----- | ----- |
-| - | - | - | - | - | - | - |
+### Movie Domain
+|kb|goals|upper bound|agt=4|agt=4 (NL)|agt=9|agt=9 (NL)|
+| ----- | ----- | ----- | ----- | ----- | ----- | ----- |
+|movie.kb.1k.v1.p|user_goals_first.v2.p|0.5237|0.078|0.061|0.441|0.183|
 
 ### Restaurant Domain
 |kb|goals|upper bound|agt=10|agt=10 (NL)|agt=12|agt=12 (NL)|
-| -----| ----- | ----- | ----- | ----- | ----- | ----- |
+| ----- | ----- | ----- | ----- | ----- | ----- | ----- |
 |restaurant.kb.1k.v1.p|user_goals_first.v1.p|0.4780|0.1284|0.072|0.4538|0.3018|
 |restaurant.kb.2k.v1.p|user_goals_first.v1.p|0.6672|0.2334|0.133| - | - |
 
 ### Taxi Domain
 |kb|goals|upper bound|agt=8|agt=8 (NL)|agt=13|agt=13 (NL)|
-| -----| ----- | ----- | ----- | ----- | ----- | ----- |
+| ----- | ----- | ----- | ----- | ----- | ----- | ----- |
 |taxi.kb.1k.v1.p|user_goals_first.v4.p|0.4622|0.1226|0.082|0.4456|0.205|
 |taxi.kb.2k.v1.p|user_goals_first.v4.p|0.7300|0.2118|0.1388| - | - |
 

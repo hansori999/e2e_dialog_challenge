@@ -1,15 +1,15 @@
 # SLT 2018 Special Session - Microsoft Dialogue Challenge: Building End-to-End Task-Completion Dialogue Systems
 
 ## News
-* 12/18/2018 – 12/21/2018: [SLT Workshop](http://www.slt2018.org/news/)
-* 11/25/2018: Paper acceptance announcement.
-* 11/11/2018: Paper submission.
-* 11/04/2018: Results (including human evaluation) Announcement.
-* 10/14/2018: System submission. (Format to be announaced.)
-* 08/03/2018: Movie domain is up.
-* 07/28/2018: Restaurant and Taxi domains: [Data](https://github.com/xiul-msr/e2e_dialog_challenge/data/) and [Simulators](https://github.com/xiul-msr/e2e_dialog_challenge/system/) are up, see [cmd.md](https://github.com/xiul-msr/e2e_dialog_challenge/blob/master/cmd.md) for instruction.
-* 07/16/2018: [Registration](https://docs.google.com/forms/d/e/1FAIpQLScWl3BYiCLHjR2hGrkehx1kS53vvMTmQ2ktuvGNYSAtiQLSpw/viewform) is now open.
-* 07/06/2018: [Task description](https://github.com/xiul-msr/e2e_dialog_challenge/blob/master/microsoft-dialogue-challenge-slt2018.pdf) is up.
+- [ ] 12/18/2018 – 12/21/2018: [SLT Workshop](http://www.slt2018.org/news/)
+- [ ] 11/25/2018: Paper acceptance announcement.
+- [ ] 11/11/2018: Paper submission.
+- [ ] 11/04/2018: Results (including human evaluation) Announcement.
+- [ ] 10/14/2018: System submission. (Format to be announaced.)
+- [x] 08/03/2018: Movie domain is up, see [cmd.md](https://github.com/xiul-msr/e2e_dialog_challenge/blob/master/cmd.md) for instruction.
+- [x] 07/28/2018: Restaurant and Taxi domains: [Data](https://github.com/xiul-msr/e2e_dialog_challenge/data/) and [Simulators](https://github.com/xiul-msr/e2e_dialog_challenge/system/) are up, see [cmd.md](https://github.com/xiul-msr/e2e_dialog_challenge/blob/master/cmd.md) for instruction.
+- [x] 07/16/2018: [Registration](https://docs.google.com/forms/d/e/1FAIpQLScWl3BYiCLHjR2hGrkehx1kS53vvMTmQ2ktuvGNYSAtiQLSpw/viewform) is now open.
+- [x] 07/06/2018: [Task description](https://github.com/xiul-msr/e2e_dialog_challenge/blob/master/microsoft-dialogue-challenge-slt2018.pdf) is up.
 
 ## Task
 This special session introduces a Dialogue Challenge for building end-to-end task-completion dialogue systems, with the goal of encouraging the dialogue research community to collaborate and benchmark on standard datasets and unified experimental environment. In this special session, we will release human-annotated conversational data in three domains (movie-ticket booking, restaurant reservation, and taxi booking), as well as an experiment platform with built-in simulators in each domain, for training and evaluation purposes. The final submitted systems will be evaluated both in simulated setting and by human judges.
@@ -38,11 +38,11 @@ We will also conduct human evaluation for the competition. We will ask human jud
 * A rule-based agent is provided.
 * A standard RL agent (DQN model) is provided.
 
+<!---
 ## Timeline
 |Phase|Dates|
 | ------ | -------------- |
 |TBA|TBA|
-<!---
 |1. Development Phase|June 1 – Sept 9|
 |1.1 Code (data extraction code, seq2seq baseline)|June 1|
 |1.2 "Trial" data made available|June 18|
@@ -61,11 +61,11 @@ We will also conduct human evaluation for the competition. We will ask human jud
 If you submit any system to this challenge or publish any other work making use of the resources provided on this project, we ask you to cite the following task description papers:
 
 ```
-@inproceedings{li2018mschallenge,
-title={Microsoft Dialogue Challenge: Building End-to-End Task-Completion Dialogue Systems},
-author={Li, Xiujun and Panda Sarah and Liu, Jingjing and Gao, Jianfeng},
-booktitle={SLT},
-year={2018}
+@article{li2018microsoft,
+  title={Microsoft Dialogue Challenge: Building End-to-End Task-Completion Dialogue Systems},
+  author={Li, Xiujun and Panda, Sarah and Liu, Jingjing and Gao, Jianfeng},
+  journal={arXiv preprint arXiv:1807.11125},
+  year={2018}
 }
 
 @article{li2016user,
@@ -78,3 +78,6 @@ year={2018}
 
 ## Contact
 * For questions specific to the challenge, you can contact us at <xiul@microsoft.com>.
+
+## FQA
+1. How to implement an agent: see [here](https://github.com/xiul-msr/e2e_dialog_challenge/issues/1)
